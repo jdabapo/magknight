@@ -4,12 +4,13 @@ using UnityEngine;
 
 [RequireComponent (typeof (PlayerController))]
 [RequireComponent (typeof(Rigidbody2D))]
-public class Player : MonoBehaviour
+public class Player : Humanoid
 {
-    public float moveSpeed = 5;	
+
     private Vector2 moveDirection;
 	PlayerController controller;
-    void Start(){
+    protected override void Start(){
+        base.Start();
 		controller = GetComponent<PlayerController> ();
     }
     void ProcessInput(){
