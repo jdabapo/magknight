@@ -4,12 +4,13 @@ using UnityEngine;
 
 [RequireComponent (typeof (PlayerController))]
 [RequireComponent (typeof(Rigidbody2D))]
-public class Player : MonoBehaviour
+public class Player : Humanoid
 {
-    public float moveSpeed = 5;	
+
     private Vector2 moveDirection;
 	PlayerController controller;
-    void Start(){
+    protected override void Start(){
+        base.Start();
 		controller = GetComponent<PlayerController> ();
     }
     void ProcessInput(){
@@ -24,9 +25,20 @@ public class Player : MonoBehaviour
         Vector3 dir = (Input.mousePosition - Camera.main.WorldToScreenPoint(transform.position)); 
         //float angle = Mathf.Atan2(dir.y,dir.x) * Mathf.Rad2Deg;
         //transform.rotation = Quaternion.AngleAxis(angle,Vector3.forward);
+
     }
+
 
     void Update(){
         ProcessInput();
+    }
+    private void onTriggerEnter2D(Collider2D other){
+            // check if other is a magnet; if it is a magnet, then two cases
+            // 1. if it is thrown by player,
+            // 2. or repulsed/attracted
+            Debug.Log("hit detected");
+            // check if other is another enemy.
+            // 3 cases this way; enemies are attracted to one another, and smash and do dmage
+            
     }
 }
