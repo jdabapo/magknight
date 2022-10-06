@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     private float moveSpeed;
     void Start(){
         rb = GetComponent<Rigidbody2D> ();
-        sprite = GetComponentInChildren<SpriteRenderer> ();
+        sprite = GetComponent<SpriteRenderer> ();
     }
 
     void FixedUpdate(){

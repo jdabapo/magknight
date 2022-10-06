@@ -6,10 +6,8 @@ using UnityEngine;
 [RequireComponent (typeof(CircleCollider2D))]
 public class Enemy : Humanoid
 {
-
-    private bool facingRight;
     private float distance;
-    public float distanceBetween = 4;
+    public float distanceBetween = 3;
     public float attackRange;
     public SpriteRenderer sprite;
     Rigidbody2D rb;
@@ -18,24 +16,18 @@ public class Enemy : Humanoid
         base.Start();
         target = GameObject.FindGameObjectWithTag("Player").transform;
         rb = GetComponent<Rigidbody2D>();
-        rb.bodyType = RigidbodyType2D.Static;
-        rb.gravityScale = 0;
-        sprite = GetComponentInChildren<SpriteRenderer> ();
-        //StartCoroutine(UpdatePath());
+        sprite = GetComponent<SpriteRenderer> ();
     }
 
-
-    void Update(){ 
+    private void Follow(){
         distance = Vector2.Distance(target.position,transform.position);
         Vector2 targetDirection = (target.transform.position - transform.position);
         targetDirection.Normalize();
-        float angle = Mathf.Atan2(targetDirection.x,targetDirection.y) * Mathf.Rad2Deg;
-        if (distance < distanceBetween){
-            
+        if (distance > distanceBetween){
             transform.position = Vector2.MoveTowards(transform.position,target.transform.position,moveSpeed * Time.deltaTime);
         }
-        // transform.rotation = Quaternion.Euler(Vector3.forward * angle);
-        if (angle < 0){
+        float angle = Mathf.Atan2(targetDirection.y, targetDirection.x) * Mathf.Rad2Deg;
+        if (Mathf.Abs(angle) > 90){
             // face left
             sprite.flipX = true;
         }
@@ -43,11 +35,11 @@ public class Enemy : Humanoid
             sprite.flipX = false;
         }
     }
-    public void Flip(){
-        Vector3 currentScale = gameObject.transform.localScale;
-        currentScale.x *= -1;
-        facingRight = !facingRight;
+
+    void Update(){ 
+       Follow();
     }
+
     // TODO: make this work
     private void onTriggerEnter2D(Collider2D other){
         // check if other is a magnet; if it is a magnet, then two cases
