@@ -50,6 +50,7 @@ public class Controller : MonoBehaviour
 
         }
 
+        /*
         //add new magnet to the game
         if (Input.GetMouseButtonDown(1))
         {
@@ -60,6 +61,7 @@ public class Controller : MonoBehaviour
             }
             magnetList.Add(newMagnet);
         }
+        */
 
         if (Input.GetKeyDown(KeyCode.X))
         {

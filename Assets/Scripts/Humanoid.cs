@@ -13,17 +13,28 @@ public class Humanoid : MonoBehaviour, IDamageable
     [SerializeField]
     protected int moveSpeed = 5;
     protected bool dead;
+    [SerializeField]
+    protected bool magnetizable;
+
     protected virtual void Start()
     {
         dead = false;
         currentHealth = startingHealth;
     }
+
+    //
     public void takeHit(float damage){
 
     }
-    // Update is called once per frame
+
+    //
     public void takeDamage(float damage){
 
+    }
+
+    public bool getMagnetizable()
+    {
+        return magnetizable;
     }
 
     public void Die(){

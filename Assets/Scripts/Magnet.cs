@@ -23,54 +23,16 @@ public class Magnet : MonoBehaviour
     {
         cCollider = GetComponent<CircleCollider2D>();
         rb = GetComponent<Rigidbody2D>();
+        magneticObjects = LayerMask.GetMask("Magnet", "Magnetic");
     }
 
 
     void FixedUpdate()
     {
-        rbMagnet2();
+        rbMagnet();
     }
 
-    /* 
-     * 
-     * 
-     * 
-     * 
-     */
-    void rbMagnet1()
-    {
-        if (polarity != 0)
-        {
-            Collider2D[] nearMagnets = Physics2D.OverlapCircleAll(transform.position, magnetRadius, magneticObjects);
-            foreach (Collider2D mCollider in nearMagnets)
-            {
-                Vector2 otherMagPos;
-                if (mCollider.GetComponent<Rigidbody2D>())
-                {
-                    otherMagPos = mCollider.GetComponent<Rigidbody2D>().position;
-                }
-                else
-                {
-                    otherMagPos = mCollider.transform.position;
-                }
-
-           
-                // SPIN TIME
-                //transform.right = otherMagPos - new Vector2(transform.position.x, transform.position.y);
-
-                float sqrMag = (otherMagPos - rb.position).sqrMagnitude; //represents the distance between the two magnets. Not Distance function bc sqrt is expensive >:(
-                //factor that makes the force large the close it is to the other magnet.
-                float coolFloat = magnetStrength / (2*(sqrMag + 0.01f));
-                if (!dampen) {
-                    coolFloat /= coolFloat;
-                }
-
-                rb.AddForce(coolFloat * magnetStrength * polarity * (otherMagPos - rb.position).normalized, ForceMode2D.Force);
-            }
-        }
-    }
-
-    void rbMagnet2()
+    void rbMagnet()
     {
         if (polarity != 0)
         {
@@ -90,13 +52,14 @@ public class Magnet : MonoBehaviour
                         otherMagPos = mCollider.transform.position;
                     }
 
-                    float sqrMag = (otherMagPos - rb.position).sqrMagnitude; //represents the distance between the two magnets. Not Distance function bc sqrt is expensive >:(
-                                                                             
+                    float sqrMag = (otherMagPos - rb.position).sqrMagnitude; //represents the distance between the two magnets. Not Distance function bc sqrt is expensive >:(                                                      
                     float coolFloat = magnetStrength / (2 * (sqrMag + 0.01f)); //factor that makes the force large the close it is to the other magnet.
                     if (!dampen)
                     {
                         coolFloat /= coolFloat;
                     }
+
+                    Magnet otherMag = mCollider.GetComponent<Magnet>();
 
                     rb.AddForce(coolFloat * magnetStrength * polarity * (otherMagPos - rb.position).normalized, ForceMode2D.Force);
                 }

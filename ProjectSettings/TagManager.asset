@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Magnet
   - Clickable
+  - TestObject
+  - Graphic
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -14,8 +17,8 @@ TagManager:
   - Water
   - UI
   - Magnet
-  - 
-  - 
+  - Magnetic
+  - Magnetizable
   - 
   - 
   - 
