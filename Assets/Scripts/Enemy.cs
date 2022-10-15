@@ -24,6 +24,7 @@ public class Enemy : Humanoid
         rb = GetComponent<Rigidbody2D>();
         sprRen = GetComponent<SpriteRenderer> ();
         mag = GetComponent<Magnet>(); //possibility that not all enemies will be magnetizable?
+        transform.position = new Vector3(transform.position.x, transform.position.y, -1);
     }
 
     private void Follow(){

@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -1828,9 +1828,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      EnemyAttackRed_20: 2144095556
-      EnemyAttack_07: -404110574
       EnemyAttackBlue_09: 89732175
+      EnemyAttack_07: -404110574
       EnemyAttackRed_07: -1944251685
       EnemyAttackRed_14: 1146188203
       EnemyAttackBlue_21: 1213052939
@@ -1911,6 +1910,7 @@ TextureImporter:
       EnemyAttackRed_01: -1021536269
       EnemyAttackBlue_10: -213393504
       EnemyAttack_20: 360095386
+      EnemyAttackRed_20: 2144095556
       EnemyAttack_03: -1663737980
   spritePackingTag: 
   pSDRemoveMatte: 0
