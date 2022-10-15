@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4539262154643617110}
   - component: {fileID: -2409167827845399759}
   m_Layer: 8
-  m_Name: Enemy
+  m_Name: EnemyBrokenAnimation
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4539262154643617096}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.51, y: 4.1, z: -1}
+  m_LocalPosition: {x: -1.0328236, y: -1.9300086, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -88,11 +88,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 10
   currentHealth: 0
-  moveSpeed: 5
+  moveSpeed: 1
   magnetizable: 1
   distanceBetween: 2
   attackRange: 0
   redMagnetizedSprite: {fileID: -1916553085, guid: 8a03ad9b707bd4efb8ee784888c6eaf9, type: 3}
+  animator: {fileID: -2409167827845399759}
   sprRen: {fileID: 0}
 --- !u!212 &4539262154643617109
 SpriteRenderer:
@@ -175,7 +176,7 @@ Animator:
   m_GameObject: {fileID: 4539262154643617096}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7696e6fc9a054b14d913ef6924982343, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
