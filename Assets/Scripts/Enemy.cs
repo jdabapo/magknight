@@ -11,12 +11,14 @@ public class Enemy : Humanoid
     public float attackRange;
     public Sprite redMagnetizedSprite; //Sprite when enemy is hit by red magnet. maybe this is better if we cycle sprite between one sprite sheet rather than just one sprite.
     private enum magneticID{None,Red,Blue}; 
-       
+    private enum enemyState{Idle,Chase,Attack};
     public Animator animator;
     public SpriteRenderer sprRen;
     Rigidbody2D rb;
     Transform target;
     Magnet mag;
+
+    private enemyState es;
 
     protected override void Start(){
         base.Start();
@@ -37,6 +39,7 @@ public class Enemy : Humanoid
         }
         else{
             animator.SetBool("isWalking",false);
+            animator.SetTrigger("isAttack");
         }
         float angle = Mathf.Atan2(targetDirection.y, targetDirection.x) * Mathf.Rad2Deg;
         if (Mathf.Abs(angle) > 90){
@@ -68,6 +71,5 @@ public class Enemy : Humanoid
         // 2. or repulsed/attracted
         // check if other is another enemy.
         // 3 cases this way; enemies are attracted to one another, and smash and do dmage
-        
     }
 }
